@@ -1,0 +1,77 @@
+h2, h3, h4, h5, h6
+  text-align: center
+  font-weight: normal
+  color: $main-color
+h2
+  background:  url('../images/dashed-line.png') center top repeat-x
+  padding-top: 20px
+  text-transform: uppercase
+  font:
+    family: $main-font
+    size: 28px
+  span
+    display: block
+    color: #00CC99
+h3
+  font-weight: 700
+  &.invited
+    background:  url('../images/and.png') center center no-repeat
+    line-height: 105px
+    height: 105px
+    font:
+      family: $cursive-font
+      style: italic
+      size: 36px
+      weight: normal
+p
+  line-height: 25px
+  &.address
+    text-align: center
+a
+  color: $main-color
+  &:hover
+    color: #00CC99
+.register
+  a
+    display: block
+    background-color: #00CC99
+    color: #fff
+    font-family: $main-font
+    font-size: 25px
+    text:
+      align: center
+      transform: uppercase
+    width: 106px
+    height: 46px
+    padding: 30px 0
+    @include border-radius(106px)
+    margin: 0 auto
+
+.signup-greeting
+  font:
+    family: $cursive-font
+    style: italic
+    size: 80px
+    weight: bold
+  color: $grey-lighter
+  line-height: 1em
+  text-align: center
+  bottom: -230px
+  left: 0
+  max-width: 360px
+  z-index: -1
+
+//forms typography
+label
+  font-family: $cursive-font
+  font-style: italic
+  font-size: 20px
+
+textarea
+  line-height: 1.2em
+
+.help-inline
+  float: right
+  font-size: 12px
+
+

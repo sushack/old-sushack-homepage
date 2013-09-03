@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block page_title %}
+<h2>Refresh Oxford
+    <span>{{ event.start|date:"jS F" }}</span>
+    <span>{{ event.start|date:"H:i" }} - {{ event.finish|date:"H:i" }}</span>
+</h2>
+{% endblock page_title %}
+
+{% block content %}
+    {% crispy form %}
+    <p class="signup-greeting">See you on {{ event.start|date:"F jS" }}!</p>
+{% endblock %}

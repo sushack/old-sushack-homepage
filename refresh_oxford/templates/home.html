@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+{% load gravatar %}
+
+{% block page_title %}What is Refresh Oxford?{% endblock %}
+
+{% block content %}
+<p>Refresh Oxford is Oxford's premier hackday event where the best developers, designers, front-enders and UX-ers come together to create amazing projects in just one day. Hosted by digital agency <a href="http://incuna.com/">Incuna</a> we'll provide the space, good food and drinks…</p>
+
+{% if event %}
+    <h3 class="invited">You're invited!</h3>
+    <p class="address">{{ event.start|date:"l, F j, Y" }} from: {{ event.start|date:"H:i" }} — {{ event.finish|date:"H:i" }}<br>
+    {% if event.map %}<a href="{{ event.map }}">{{ event.where }}</a>{% endif %}  It’s free!</p>
+    <p class="register"><a href="{% url 'signup' %}">Register Now!</a></p>
+
+    {% if event.attendee_set %}
+    <h2>So Who's Coming?</h2>
+    {% for attendee in event.attendee_set.all %}
+        <img src="{% gravatar_for_email attendee.email %}" title="{{ attendee.name }}">
+    {% endfor %}
+    {% endif %}
+{% endif %}
+
+{% if event %}
+<h2>Can't make this one?</h2>
+{% else %}
+<h2>Nothing coming up =(</h2>
+{% endif %}
+<p>That's too bad! Sign up to our mailing list to find out when the next Refresh Oxford is going to happen.</p>
+
+{% crispy form %}
+
+{% endblock %}
+

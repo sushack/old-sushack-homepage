@@ -1,0 +1,17 @@
+boto==2.9.2
+dj-database-url==0.2.1
+django-admin-sso==0.1.2
+django-cache-url==0.3.4
+django-crispy-forms==1.2.7
+django-debug-toolbar==0.9.4
+django-extensions==1.1.1
+django-gravatar==0.1.0
+django-mptt==0.5.5
+django-storages==1.1.8
+django==1.5.1
+feincms==1.7.4
+gunicorn==0.17.4
+incuna-storages==1.1
+psycopg2==2.5
+raven==3.3.6
+south==0.7.6
