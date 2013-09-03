@@ -1,4 +1,4 @@
-# Django settings for refresh_oxford project.
+# Django settings for sushack project.
 import os
 
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
@@ -10,15 +10,15 @@ DIRNAME = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir
 DEBUG = bool(os.environ.get('DEBUG', False))
 DEVELOPMENT_SITE = bool(os.environ.get('DEVELOPMENT_SITE', False))
 
-DATABASES = {'default': dj_database_url.config(default='postgres://localhost/refresh_oxford')}
+DATABASES = {'default': dj_database_url.config(default='postgres://localhost/sushack')}
 
-ALLOWED_HOSTS = ['localhost', 'www.refreshoxford.co.uk', 'refresh-oxford.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'www.sushack.co.uk', 'sushack.herokuapp.com']
 
-ADMINS = (('Admin', 'bugs@incuna.com'),)
+ADMINS = (('Admin', 'bugs@sushack.co.uk'),)
 MANAGERS = ADMINS
 ADMIN_EMAILS = zip(*ADMINS)[1]
-EMAIL_SUBJECT_PREFIX = '[refresh_oxford] '
-SERVER_EMAIL = DEFAULT_FROM_EMAIL = 'info@incuna.com'
+EMAIL_SUBJECT_PREFIX = '[sushack] '
+SERVER_EMAIL = DEFAULT_FROM_EMAIL = 'info@sushack.co.uk'
 EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
 
 TIME_ZONE = 'UTC'
@@ -78,14 +78,14 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-ROOT_URLCONF = 'refresh_oxford.urls'
+ROOT_URLCONF = 'sushack.urls'
 SECRET_KEY = '$$g6*tl!&amp;u4kd9!cs*re9#-u+xe!)25)m0(&amp;*1%8k*p*&amp;^cc6i'
 SITE_ID = 1
-WSGI_APPLICATION = 'refresh_oxford.wsgi.application'
+WSGI_APPLICATION = 'sushack.wsgi.application'
 
 INSTALLED_APPS = (
     # Project Apps
-    'refresh_oxford',
+    'sushack',
 
     # Libraries
     'admin_sso',
