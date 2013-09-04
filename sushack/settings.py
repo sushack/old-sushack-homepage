@@ -17,7 +17,6 @@ import dj_database_url
 DIRNAME = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
 
 DEBUG = bool(os.environ.get('DEBUG', False))
-DEVELOPMENT_SITE = bool(os.environ.get('DEVELOPMENT_SITE', False))
 
 DATABASES = {'default': dj_database_url.config(default='postgres://localhost/sushack')}
 
