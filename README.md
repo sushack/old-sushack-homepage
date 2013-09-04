@@ -11,4 +11,8 @@ Instructions for installation:
 
 Now let's start the dev server:
 
-    DEBUG=1 AWS_ACCESS_KEY_ID=id AWS_SECRET_ACCESS_KEY=secret python manage.py runserver
+    python manage.py runserver
+
+or
+
+    ./manage.py runserver
