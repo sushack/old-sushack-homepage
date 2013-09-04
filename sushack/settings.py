@@ -28,20 +28,6 @@ USE_TZ = True
 LANGUAGE_CODE = 'en-GB'
 USE_I18N = False  # Internationalization
 
-# AWS
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-AWS_LOCATION = os.environ.get('AWS_LOCATION', '')
-AWS_S3_SECURE_URLS = False
-AWS_PRELOAD_METADATA = True
-AWS_QUERYSTRING_AUTH = False
-AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME', 'refresh-oxford')
-AWS_S3_CUSTOM_DOMAIN = os.environ.get('AWS_S3_CUSTOM_DOMAIN')
-AWS_CLOUDFRONT_STREAMING_DOMAIN = os.environ.get('AWS_CLOUDFRONT_STREAMING_DOMAIN')
-DEFAULT_FILE_STORAGE = os.environ.get('DEFAULT_FILE_STORAGE', 'queued_storage.backends.QueuedS3BotoStorage')
-STATICFILES_STORAGE = os.environ.get('STATICFILES_STORAGE', 'incuna_storages.backends.S3StaticStorage')
-S3_URL = 'http://{0}.s3.amazonaws.com/'.format(AWS_STORAGE_BUCKET_NAME)
-
 # Static
 MEDIA_ROOT = os.path.join(DIRNAME, 'client_media')
 MEDIA_URL = '/client_media/'
