@@ -6,6 +6,7 @@ Instructions for installation:
     mkvirtualenv sushack
     workon sushack
     pip install -r requirements.txt
+    psql#: create database sushack;
     python manage.py syncdb
 
 Now let's start the dev server:
