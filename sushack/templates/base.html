@@ -20,27 +20,14 @@
     <script src="{{ STATIC_URL }}scripts/libs/modernizr-2.5.3.min.js"></script>
     {% endblock %}
 
-    {% block jquery_js %}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}scripts/libs/jquery-1.7.2.min.js"><\/script>')</script>
-    {% endblock jquery_js %}
-
-    {# Include your plugins before main.js and your other JS after main.js #}
-
-    <script src="{{ STATIC_URL }}scripts/plugins/fontdetect.js"></script>
-    <script src="{{ STATIC_URL }}scripts/plugins/jquery.placeholder.min.js"></script>
-    <script src="{{ STATIC_URL }}scripts/main.js"></script>
-
-    {% block extra_script %}{% endblock extra_script %}
-
     {% block extra_head %}{% endblock extra_head %}
 </head>
 
 {% block body %}
 <body id="page-{% block bodyid %}{% endblock bodyid %}" class="{% block bodyclass %}{% endblock bodyclass %}">
-{% block pre_wrap %}{% endblock pre_wrap %}
+    {% block pre_wrap %}
+    {% endblock pre_wrap %}
     {% block wrap %}
-    <div id="wrap">
         {% block wrap_content %}
             {% block preheader %}{% endblock preheader %}
 
@@ -79,20 +66,13 @@
             </div>
             {% endblock page %}
         {% endblock wrap_content %}
-    </div>
-
-    {% block footer %}
-    <footer id="site-footer">
-    <div class="structure">
-        {% block footer_content %}
-        <p>&copy; Copyright 2012 Incuna Ltd. All rights reserved</p>
-        <p><a href="{% url 'terms' %}">Terms &amp; Conditions</a> <a href="/code-of-conduct/">Code of Conduct</a></p>
-        {% endblock footer_content %}
-    </div>
-    </footer>
-    {% endblock footer %}
+        {% block footer %}
+            {% block footer_content %}
+            {% endblock footer_content %}
+        {% endblock footer %}
     {% endblock wrap %}
-    {% block post_wrap %}{% endblock post_wrap %}
+    {% block post_wrap %}
+    {% endblock post_wrap %}
 
     {% block google_analytics %}
     <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.-->
@@ -103,6 +83,20 @@
             s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>
     {% endblock google_analytics %}
+
+    {% block jquery_js %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}scripts/libs/jquery-1.7.2.min.js"><\/script>')</script>
+    {% endblock jquery_js %}
+
+    {# Include your plugins before main.js and your other JS after main.js #}
+
+    <script src="{{ STATIC_URL }}scripts/plugins/fontdetect.js"></script>
+    <script src="{{ STATIC_URL }}scripts/plugins/jquery.placeholder.min.js"></script>
+    {% block extra_plugins %}{% endblock extra_plugins %}
+    <script src="{{ STATIC_URL }}scripts/main.js"></script>
+
+    {% block extra_script %}{% endblock extra_script %}
 </body>
 {% endblock body %}
 </html>
