@@ -16,8 +16,6 @@ urlpatterns = patterns('',
     url(r'^events/(?P<pk>\d+)/$', EventDetail.as_view(), name='event-detail'),
     url(r'^signup/$', SignUp.as_view(), name='signup'),
     url(r'^admin/', include(admin.site.urls)),
-
-    url('', include('feincms.urls')),
 )
 
 urlpatterns += staticfiles_urlpatterns()
