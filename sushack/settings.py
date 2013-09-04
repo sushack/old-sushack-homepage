@@ -108,8 +108,14 @@ SITE_ID = 1
 WSGI_APPLICATION = 'sushack.wsgi.application'
 
 INSTALLED_APPS = (
-    # Project Apps
-    'sushack',
+    # Django
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.admin',
 
     # Libraries
     'admin_sso',
@@ -123,14 +129,8 @@ INSTALLED_APPS = (
     'gunicorn',
     'raven.contrib.django',
 
-    # Django
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.admin',
+    # Project Apps
+    'sushack',
 )
 
 LOGGING = {
