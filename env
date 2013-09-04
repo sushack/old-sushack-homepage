@@ -1,2 +1,0 @@
-export DEBUG=True
-export DATABASE_URL='postgres://sushack:sushack@127.0.0.1/sushack'

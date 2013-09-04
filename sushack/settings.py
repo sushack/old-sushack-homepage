@@ -32,7 +32,7 @@ USE_I18N = False  # Internationalization
 MEDIA_ROOT = os.path.join(DIRNAME, 'client_media')
 MEDIA_URL = '/client_media/'
 STATIC_ROOT = os.path.join(DIRNAME, 'static_media')
-STATIC_URL = os.environ.get('STATIC_URL', S3_URL + 'static/')
+STATIC_URL = os.environ.get('STATIC_URL', 'static/')
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
