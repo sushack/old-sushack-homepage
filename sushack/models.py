@@ -10,7 +10,8 @@ class Attendee(models.Model):
     name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     github_username = models.CharField(max_length=255, null=True, blank=True)
-    extra = models.TextField(null=True, blank=True)
+    twitter_username = models.CharField(max_length=255, null=True, blank=True)
+    project = models.TextField(null=True, blank=True)
 
     class Meta:
         ordering = ['pk']

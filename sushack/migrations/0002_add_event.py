@@ -9,7 +9,7 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding model 'Event'
-        db.create_table(u'refresh_oxford_event', (
+        db.create_table(u'sushack_event', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('description', self.gf('django.db.models.fields.TextField')()),
@@ -18,24 +18,25 @@ class Migration(SchemaMigration):
             ('finish', self.gf('django.db.models.fields.DateTimeField')()),
             ('current', self.gf('django.db.models.fields.BooleanField')(default=False)),
         ))
-        db.send_create_signal(u'refresh_oxford', ['Event'])
+        db.send_create_signal(u'sushack', ['Event'])
 
 
     def backwards(self, orm):
         # Deleting model 'Event'
-        db.delete_table(u'refresh_oxford_event')
+        db.delete_table(u'sushack_event')
 
 
     models = {
-        u'refresh_oxford.attendee': {
+        u'sushack.attendee': {
             'Meta': {'ordering': "['pk']", 'object_name': 'Attendee'},
             'email': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '255'}),
-            'extra': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            'project': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'github_username': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
+            'twitter_username': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '255'})
         },
-        u'refresh_oxford.event': {
+        u'sushack.event': {
             'Meta': {'ordering': "['start']", 'object_name': 'Event'},
             'current': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'description': ('django.db.models.fields.TextField', [], {}),
@@ -45,7 +46,7 @@ class Migration(SchemaMigration):
             'start': ('django.db.models.fields.DateTimeField', [], {}),
             'where': ('django.db.models.fields.TextField', [], {})
         },
-        u'refresh_oxford.mailinglistperson': {
+        u'sushack.mailinglistperson': {
             'Meta': {'object_name': 'MailingListPerson'},
             'email': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '255'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -53,4 +54,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['refresh_oxford']
+    complete_apps = ['sushack']

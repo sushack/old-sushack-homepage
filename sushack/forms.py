@@ -23,7 +23,7 @@ class MailingListForm(forms.ModelForm):
 
 class SignUpForm(forms.ModelForm):
     class Meta:
-        fields = ('name', 'email', 'github_username', 'extra')
+        fields = ('name', 'email', 'github_username', 'twitter_username', 'project')
         model = Attendee
 
     helper = FormHelper()
@@ -33,7 +33,8 @@ class SignUpForm(forms.ModelForm):
             Field('name', placeholder='Name*'),
             Field('email', placeholder='Email address*'),
             Field('github_username', placeholder='GitHub User (Optional)'),
-            Field('extra', rows='5', placeholder='Anything else? Dietary requirements etc.'),
+            Field('twitter_username', placeholder='Twitter User (Optional)'),
+            Field('project', rows='5', placeholder='What would you like to work on?'),
             Submit('submit', _('Sign Up!'), css_class='submit'),
         )
     )
