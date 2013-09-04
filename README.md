@@ -11,8 +11,8 @@ Instructions for installation:
 
 Now let's start the dev server:
 
-    python manage.py runserver
+    DEBUG=True python manage.py runserver
 
 or
 
-    ./manage.py runserver
+    DEBUG=True ./manage.py runserver
