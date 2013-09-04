@@ -12,13 +12,13 @@ DEVELOPMENT_SITE = bool(os.environ.get('DEVELOPMENT_SITE', False))
 
 DATABASES = {'default': dj_database_url.config(default='postgres://localhost/sushack')}
 
-ALLOWED_HOSTS = ['localhost', 'www.sushack.co.uk', 'sushack.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'www.sushack.co.uk', 'sushack.herokuapp.com']
 
-ADMINS = (('Admin', 'bugs@sushack.co.uk'),)
+ADMINS = (('Admin', 'hello@sushack.co.uk'), ('max', 'moglenstar@gmail.com'), )
 MANAGERS = ADMINS
 ADMIN_EMAILS = zip(*ADMINS)[1]
 EMAIL_SUBJECT_PREFIX = '[sushack] '
-SERVER_EMAIL = DEFAULT_FROM_EMAIL = 'info@sushack.co.uk'
+SERVER_EMAIL = DEFAULT_FROM_EMAIL = 'hello@sushack.co.uk'
 EMAIL_BACKEND = os.environ.get('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
 
 TIME_ZONE = 'UTC'
