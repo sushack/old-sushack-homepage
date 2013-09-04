@@ -29,10 +29,7 @@ LANGUAGE_CODE = 'en-GB'
 USE_I18N = False  # Internationalization
 
 # Static
-MEDIA_ROOT = os.path.join(DIRNAME, 'client_media')
-MEDIA_URL = '/client_media/'
-STATIC_ROOT = os.path.join(DIRNAME, 'static_media')
-STATIC_URL = os.environ.get('STATIC_URL', 'static/')
+STATIC_URL = '/static/'
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -95,7 +92,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 )
 
-SENTRY_DSN = os.environ.get('SENTRY_DSN')
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -108,35 +104,6 @@ LOGGING = {
     'filters': {
         'require_debug_false': {'()': 'django.utils.log.RequireDebugFalse'}
     },
-    'handlers': {
-        'sentry': {
-            'level': 'DEBUG',
-            'filters': ['require_debug_false'],
-            'class': 'raven.contrib.django.handlers.SentryHandler'
-        },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'console',
-        },
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['sentry', 'console'],
-            'level': 'ERROR',
-            'propagate': True,
-        },
-        'incuna.default': {
-            'handlers': ['sentry', 'console'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-        'sentry.errors': {
-            'handlers': ['console'],
-            'level': 'ERROR',
-            'propogate': True,
-        },
-    }
 }
 
 # Debug Toolbar
