@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load crispy_forms_tags %}
 {% load gravatar %}
 
 {% block page_title %}
@@ -55,7 +56,7 @@ SusHack Oxford - The sustainability oriented hack day
                 When is SusHack?
             </h2>
             <p class="centered">
-                SusHack will take place on <strong>Saturday 2nd November 2013</strong>.
+                SusHack will take place on <strong>{{ event.start|date:"l d F Y" }}</strong>.
             </p>
         </div>
     </section>
@@ -69,8 +70,8 @@ SusHack Oxford - The sustainability oriented hack day
             </p>
             <div id="map_canvas"></div>
             <p class="centered">
-                <a href="https://www.google.co.uk/maps?q=228-240+Banbury+Road,+Summertown,+Oxfordshire,+OX27BY&hl=en&sll=51.813942,-1.294792&sspn=1.429733,3.891907&hnear=240+Banbury+Rd,+Oxford+OX2+7BY,+United+Kingdom&t=m&z=16" target="_blank">
-                    2degrees, 228-240 Banbury Road, Summertown, Oxfordshire, OX27BY
+                <a href="https://www.google.co.uk/maps?q={{ event.where | urlencode }}" target="_blank">
+                    {{ event.where }}
                 </a>
             </p>
         </div>
@@ -81,26 +82,27 @@ SusHack Oxford - The sustainability oriented hack day
                 Schedule
             </h2>
             <p>
-                We're still firming up the details, but right now we're looking to be opening the doors at <strong>9:00 am</strong> and finishing by <strong>8:00 pm</strong>.
+                We're still firming up the details, but right now we're looking to be opening the doors at <strong>{{ event.start|date:"H:i" }}</strong> and finishing by <strong>{{ event.finish|date:"H:i" }}</strong>.
             </p>
         </div>
     </section>
-    <section class="section how" id="form">
-        <div class="section-inner">
-            <h2>
-                How can I participate?
-            </h2>
-            <p>
-                We'll have a sign up form on here shortly. In the mean time, you could follow <a href="http://twitter.com/sushack_">@SusHack_</a> on Twitter, so you can be the first to hear when we launch the sign up form.
-            </p>
-        </div>
-    </section>
+    {% if event %}
+        <section class="section how" id="form">
+            <div class="section-inner">
+                <h2>
+                    How can I take part?
+                </h2>
+                {% crispy form %}
+            </div>
+        </section>
+    {% endif %}
     {% if event.attendee_set %}
-        <section class="section who">
+        <section class="section who" id="attendees">
             <div class="section-inner">
                 <h2>
                     Who is going?
                 </h2>
+                {% if event.attendee_set.all %}
                 <ul class="attendees-list">
                     {% for attendee in event.attendee_set.all %}
                         <li class="attendee">
@@ -129,6 +131,11 @@ SusHack Oxford - The sustainability oriented hack day
                         </li>
                     {% endfor %}
                 </ul>
+                {% else %}
+<pre class="centered">
+Nobody is going :(
+</pre>
+                {% endif %}
             </div>
         </section>
     {% endif %}
