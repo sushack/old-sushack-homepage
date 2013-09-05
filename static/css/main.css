@@ -112,18 +112,21 @@ html, body {
     background-image: url(../img/noise.png);
     background-position: 0 0;
     color: #aaa;
-    text-shadow: 0 1px 1px #000;
     height: 100%;
 }
 body {
     padding-top: 100px;
 }
+
 a {
     color: #0f9643;
     text-decoration: none;
 }
 a:hover {
     color: #6ab53f;
+}
+.page-wrapper {
+    text-shadow: 0 1px 1px #000;
 }
 .section-inner {
     overflow: hidden;
