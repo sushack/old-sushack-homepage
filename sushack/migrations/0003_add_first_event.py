@@ -9,11 +9,11 @@ class Migration(DataMigration):
     def forwards(self, orm):
         "Write your forwards methods here."
         orm['sushack.Event'].objects.create(
-            name = 'Hackday 2',
+            name = 'SusHack Oxford 2013',
             description = '',
-            where='16 Middle Way, Oxford, OX2 7LH',
-            start=datetime.datetime(2012, 8, 18, 9, 30),
-            finish=datetime.datetime(2012, 8, 18, 20, 45),
+            where='2degrees, 228-240 Banbury Road, Summertown, Oxford',
+            start=datetime.datetime(2013, 11, 2, 9, 00),
+            finish=datetime.datetime(2013, 11, 2, 20, 00),
             current=False,
         )
 

@@ -8,6 +8,7 @@ Instructions for installation:
     pip install -r requirements.txt
     psql#: create database sushack;
     python manage.py syncdb
+    python manage.py migrate
 
 Now let's start the dev server:
 
