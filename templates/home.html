@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load gravatar %}
+
 {% block page_title %}
 SusHack Oxford - The sustainability oriented hack day
 {% endblock page_title %}
@@ -93,43 +95,43 @@ SusHack Oxford - The sustainability oriented hack day
             </p>
         </div>
     </section>
-    <section class="section who">
-        <div class="section-inner">
-            <h2>
-                Who is going?
-            </h2>
-        </div>
-        <ul class="attendees-list">
-            <li class="attendee">
-                <img src="https://1.gravatar.com/avatar/cb137dcc8b625d24ff5743a37075c839" width="80" height="80" />
-                <ul>
-                    <li class="github">
-                        <a href="http://github.com/omgmog" target="_blank">@omgmog</a>
-                    </li>
-                    <li class="twitter">
-                        <a href="http://twitter.com/omgmog" target="_blank">@omgmog</a>
-                    </li>
+    {% if event.attendee_set %}
+        <section class="section who">
+            <div class="section-inner">
+                <h2>
+                    Who is going?
+                </h2>
+                <ul class="attendees-list">
+                    {% for attendee in event.attendee_set.all %}
+                        <li class="attendee">
+                            <img
+                                src="{% gravatar_for_email attendee.email %}"
+                                title="{{ attendee.name }}"
+                                width="80"
+                                height="80"
+                            />
+
+                            <ul>
+                                <li class="github">
+                                    <a href="http://github.com/{{ attendee.github_username}}" target="_blank">
+                                        @{{ attendee.github_username}}
+                                    </a>
+                                </li>
+                                <li class="twitter">
+                                    <a href="http://twitter.com/{{ attendee.twitter_username}}" target="_blank">
+                                        @{{ attendee.twitter_username}}
+                                    </a>
+                                </li>
+                            </ul>
+                            <h5>
+                                {{ attendee.name }}
+                            </h5>
+                        </li>
+                    {% endfor %}
                 </ul>
-                <h5>
-                    Max Glenister
-                </h5>
-            </li>
-            <li class="attendee">
-                <img src="https://1.gravatar.com/avatar/43d7035caeafc49de5d7568cbf73175e" width="80" height="80" />
-                <ul>
-                    <li class="github">
-                        <a href="http://github.com/lurst" target="_blank">@lurst</a>
-                    </li>
-                    <li class="twitter">
-                        <a href="http://twitter.com/lurst" target="_blank">@lurst</a>
-                    </li>
-                </ul>
-                <h5>
-                    Gil Gonçalves
-                </h5>
-            </li>
-        </ul>
-    </section>
+            </div>
+        </section>
+    {% endif %}
     <section class="section sponsors">
         <div class="section-inner">
             <h2>
