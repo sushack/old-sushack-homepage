@@ -6,16 +6,6 @@ from .forms import MailingListForm, SignUpForm
 from .models import Attendee, Event, MailingListPerson
 
 
-class EventDetail(DetailView):
-    model = Event
-    template_name = 'event_detail.html'
-
-
-class EventList(ListView):
-    model = Event
-    template_name = 'event_list.html'
-
-
 class Home(CreateView):
     form_class = MailingListForm
     model = MailingListPerson
