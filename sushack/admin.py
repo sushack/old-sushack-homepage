@@ -5,7 +5,7 @@ from .models import Attendee, Event
 
 class AttendeeAdmin(admin.ModelAdmin):
     list_filter = ['event']
-    search_fields = ['name', 'email']
+    search_fields = ['name', 'email', 'github_username', 'twitter_username']
 
 
 class EventAdmin(admin.ModelAdmin):
