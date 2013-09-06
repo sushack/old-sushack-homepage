@@ -18,7 +18,14 @@ DIRNAME = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir
 
 DEBUG = bool(os.environ.get('DEBUG', False))
 
-DATABASES = {'default': dj_database_url.config(default='postgres://localhost/sushack')}
+DATABASES = {
+    'default':  {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'sushack',
+        'USER': 'sushack',
+        'HOST': '',
+        }
+    }
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'www.sushack.co.uk', 'sushack.herokuapp.com']
 
