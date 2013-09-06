@@ -14,7 +14,7 @@ class Migration(DataMigration):
             where='2degrees, 228-240 Banbury Road, Summertown, Oxford',
             start=datetime.datetime(2013, 11, 2, 9, 00),
             finish=datetime.datetime(2013, 11, 2, 20, 00),
-            current=False,
+            current=True,
         )
 
     def backwards(self, orm):
