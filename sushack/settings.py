@@ -27,7 +27,7 @@ DATABASES = {
         }
     }
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'www.sushack.co.uk', 'sushack.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'www.sushack.co.uk', 'dev.sushack.co.uk']
 
 ADMINS = (('Admin', 'hello@sushack.co.uk'), ('max', 'moglenstar@gmail.com'), )
 MANAGERS = ADMINS
