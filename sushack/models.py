@@ -56,6 +56,15 @@ class MailingListPerson(models.Model):
         return self.name
 
 
+class Sponsor(models.Model):
+    name = models.CharField(max_length=255)
+    url = models.CharField(max_length=512, unique=True)
+    image = models.FileField(upload_to='img')
+
+    def __unicode__(self):
+        return self.name
+
+
 Page.register_templates(
     {
         'key': '1col',

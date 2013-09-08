@@ -3,11 +3,11 @@ from django.http import HttpResponseRedirect
 from django.views.generic import CreateView, DetailView, ListView
 
 from .forms import MailingListForm, SignUpForm
-from .models import Attendee, Event, MailingListPerson
+from .models import Attendee, Event, MailingListPerson, Sponsor
 
 
 class Home(CreateView):
-    form_class = MailingListForm
+    form_class = SignUpForm
     model = MailingListPerson
     success_url = '/'
     template_name = 'home.html'
@@ -20,6 +20,8 @@ class Home(CreateView):
     def get_context_data(self, **kwargs):
         context = super(Home, self).get_context_data(**kwargs)
         context['event'] = Event.objects.current()
+        print Sponsor.objects.all()
+        context['sponsors'] = Sponsor.objects.all()
         return context
 
 

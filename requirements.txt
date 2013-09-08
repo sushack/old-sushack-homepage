@@ -13,4 +13,3 @@ gunicorn==0.17.4
 incuna-storages==1.1
 psycopg2==2.5
 raven==3.3.6
-south==0.7.6

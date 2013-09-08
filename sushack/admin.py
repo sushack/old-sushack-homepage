@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Attendee, Event
+from .models import Attendee, Event, Sponsor
 
 
 class AttendeeAdmin(admin.ModelAdmin):
@@ -15,3 +15,4 @@ class EventAdmin(admin.ModelAdmin):
 
 admin.site.register(Attendee)
 admin.site.register(Event, EventAdmin)
+admin.site.register(Sponsor)

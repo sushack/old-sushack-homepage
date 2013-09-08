@@ -127,7 +127,6 @@ INSTALLED_APPS = (
     # Libraries
     'admin_sso',
     'crispy_forms',
-    'south',
     'debug_toolbar',
     'django_extensions',
     'feincms',
