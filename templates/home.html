@@ -86,16 +86,14 @@ SusHack Oxford - The sustainability oriented hack day
             </p>
         </div>
     </section>
-    {% if event %}
-        <section class="section how" id="form">
-            <div class="section-inner">
-                <h2>
-                    How can I take part?
-                </h2>
-                {% crispy form %}
-            </div>
-        </section>
-    {% endif %}
+    <section class="section how" id="form">
+        <div class="section-inner">
+            <h2>
+                How can I take part?
+            </h2>
+            {% crispy form %}
+        </div>
+    </section>
     {% if event.attendee_set %}
         <section class="section who" id="attendees">
             <div class="section-inner">

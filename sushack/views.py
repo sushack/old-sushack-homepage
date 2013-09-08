@@ -7,14 +7,29 @@ from .models import Attendee, Event, MailingListPerson, Sponsor
 
 
 class Home(CreateView):
-    form_class = SignUpForm
+    if Event.objects.current():
+        form_class = SignUpForm
+    else:
+        form_class = MailingListForm
     model = MailingListPerson
     success_url = '/'
     template_name = 'home.html'
 
     def form_valid(self, form):
+        if Event.objects.current():
+            return self._signup_form_valid()
+        else:
+            return self._mailing_list_form_valid()
+
+    def _mailing_list_form_valid(self):
         msg = "Thanks for signing up for emails, we'll send you deails about any future emails"
         messages.info(self.request, msg)
+        return super(Home, self).form_valid(form)
+
+    def _signup_form_valid(self):
+        msg = "Thanks for signing up, we'll email you more details closer to the date."
+        messages.info(self.request, msg)
+        form.instance.event = self.event
         return super(Home, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
