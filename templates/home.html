@@ -139,25 +139,24 @@ Nobody is going :(
             </div>
         </section>
     {% endif %}
-    <section class="section sponsors">
-        <div class="section-inner">
-            <h2>
-                Sponsors
-            </h2>
-            <ul class="sponsors-list">
-                <li class="sponsor">
-                    <a href="http://2degreesnetwork.com" target="_blank">
-                        <img src="{{ STATIC_URL }}img/sponsors/2degrees.png" alt="2degrees" />
-                    </a>
-                </li>
-                <li class="sponsor">
-                    <a href="http://marmaladeandjam.co.uk" target="_blank">
-                        <img src="{{ STATIC_URL }}img/sponsors/mandj.png" alt="Marmalade &amp; Jam - Awesome web design in Oxford" />
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </section>
+    {% if sponsors %}
+        <section class="section sponsors">
+            <div class="section-inner">
+                <h2>
+                    Sponsors
+                </h2>
+                <ul class="sponsors-list">
+                    {% for sponsor in sponsors.all %}
+                        <li class="sponsor">
+                            <a href="{{ sponsor.url }}" target="_blank">
+                                <img src="{{ MEDIA_URL }}{{ sponsor.image }}" alt="{{ sponsor.name }}" />
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    {% endif %}
 {% endblock content %}
 
 {% block js %}
