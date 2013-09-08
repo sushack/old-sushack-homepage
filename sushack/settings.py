@@ -16,6 +16,8 @@ from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
 DIRNAME = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
 
 DEBUG = bool(os.environ.get('DEBUG', False))
+CRISPY_FAIL_SILENTLY = not DEBUG
+
 
 DATABASES = {
     'default':  {
