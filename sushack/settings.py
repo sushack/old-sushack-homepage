@@ -11,7 +11,6 @@ def same_path(filename):
 
 
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
-import dj_database_url
 
 
 DIRNAME = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
