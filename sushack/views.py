@@ -24,7 +24,7 @@ class Home(CreateView):
             return self._mailing_list_form_valid(form)
 
     def _mailing_list_form_valid(self, form):
-        msg = "Thanks for signing up for emails, we'll send you deails about any future emails"
+        msg = "Thanks for signing up for emails, we'll send you details about any future SusHack events."
         messages.info(self.request, msg)
         return super(Home, self).form_valid(form)
 
