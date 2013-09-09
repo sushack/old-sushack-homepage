@@ -17,16 +17,17 @@ class Home(CreateView):
 
     def form_valid(self, form):
         if Event.objects.current():
-            return self._signup_form_valid()
+            return self._signup_form_valid(form)
         else:
-            return self._mailing_list_form_valid()
+            return self._mailing_list_form_valid(form)
 
-    def _mailing_list_form_valid(self):
+    def _mailing_list_form_valid(self, form):
         msg = "Thanks for signing up for emails, we'll send you deails about any future emails"
         messages.info(self.request, msg)
         return super(Home, self).form_valid(form)
 
-    def _signup_form_valid(self):
+    def _signup_form_valid(self, form):
+        self.event = Event.objects.current()
         msg = "Thanks for signing up, we'll email you more details closer to the date."
         messages.info(self.request, msg)
         form.instance.event = self.event
