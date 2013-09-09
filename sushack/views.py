@@ -8,10 +8,10 @@ from .models import Event, Sponsor
 class Home(CreateView):
     if Event.objects.current():
         form_class = SignUpForm
+        success_url = '/#attendees'
     else:
         form_class = MailingListForm
-    model = MailingListPerson
-    success_url = '/'
+        success_url = '/'
     template_name = 'home.html'
 
     def form_valid(self, form):
