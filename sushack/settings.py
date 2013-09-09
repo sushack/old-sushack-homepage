@@ -6,6 +6,7 @@ def same_path(filename):
     """
     Returns an absolute path to a specified filename or directory on the same
     level as the settings file
+
     """
     return os.path.realpath(os.path.join(os.path.dirname(__file__), filename))
 

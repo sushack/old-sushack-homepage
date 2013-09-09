@@ -10,6 +10,5 @@ django-storages==1.1.8
 django==1.5.1
 feincms==1.7.4
 gunicorn==0.17.4
-incuna-storages==1.1
 psycopg2==2.5
 raven==3.3.6
