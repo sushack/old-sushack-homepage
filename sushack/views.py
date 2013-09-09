@@ -8,13 +8,23 @@ from .models import Sponsor
 
 
 class Home(CreateView):
-    if Event.objects.current():
-        form_class = SignUpForm
-        success_url = '/#attendees'
-    else:
-        form_class = MailingListForm
-        success_url = '/'
-
+    
+    @property
+    def success_url(self):
+        if Event.objects.current():
+            url = '/#attendees'
+        else:
+            url = '/'
+        return url
+    
+    @property
+    def form_class(self):
+        if Event.objects.current():
+            form_class_ = SignUpForm
+        else:
+            form_class_ = MailingListForm
+        return form_class_
+        
     template_name = 'home.html'
 
     def form_valid(self, form):
