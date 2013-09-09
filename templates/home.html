@@ -195,6 +195,10 @@ Nobody is going :(
                 scrollTop: $($(this).attr('href')).offset().top
             }, 500);
         });
+
+        $('.close').on('click', function () {
+            $(this).closest('.messages').fadeOut();
+        });
     });
     </script>
 {% endblock js %}
