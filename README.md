@@ -17,5 +17,3 @@ Now let's start the dev server:
 or
 
     DEBUG=True ./manage.py runserver
-
-
