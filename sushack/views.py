@@ -8,7 +8,6 @@ from .models import Sponsor
 
 
 class Home(CreateView):
-    
     @property
     def success_url(self):
         if Event.objects.current():
@@ -16,7 +15,7 @@ class Home(CreateView):
         else:
             url = '/'
         return url
-    
+
     @property
     def form_class(self):
         if Event.objects.current():
@@ -24,7 +23,7 @@ class Home(CreateView):
         else:
             form_class_ = MailingListForm
         return form_class_
-        
+
     template_name = 'home.html'
 
     def form_valid(self, form):
@@ -50,3 +49,4 @@ class Home(CreateView):
         context['event'] = Event.objects.current()
         context['sponsors'] = Sponsor.objects.all()
         return context
+
