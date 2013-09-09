@@ -44,7 +44,7 @@ SusHack Oxford - The sustainability oriented hack day
                         An application for Raspberry Pi to find which bin week it is, then indicate with LEDs next to bins.
                     </li>
                     <li>
-                        Or anything you like. <!-- You can specify any ideas you've got on the <a href="#form">sign up form</a>. -->
+                        Or anything you like. You can specify any ideas you've got for things to make on the <a href="#form">sign up form</a>.
                     </li>
                 </ul>
             </div>
@@ -56,7 +56,7 @@ SusHack Oxford - The sustainability oriented hack day
                 When is SusHack?
             </h2>
             <p class="centered">
-                SusHack will take place on <strong>{{ event.start|date:"l d F Y" }}</strong>.
+                SusHack will take place on <strong>{{ event.start|date:"l d F Y" }}</strong>, at <strong>{{ event.start|date:"H:i" }}</strong>.
             </p>
         </div>
     </section>
@@ -91,6 +91,9 @@ SusHack Oxford - The sustainability oriented hack day
             <h2>
                 How can I take part?
             </h2>
+            <p>
+                Sign up using the form below, and follow <a href="http://twitter.com/sushack_" target="_blank">@SusHack_</a> on Twitter, to hear any updates from us as they happen.
+            </p>
             {% crispy form %}
         </div>
     </section>
