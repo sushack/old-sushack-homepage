@@ -64,3 +64,4 @@ class SignUpForm(forms.ModelForm):
             css_class='signup-form',
         )
     )
+
