@@ -113,19 +113,24 @@ SusHack Oxford - The sustainability oriented hack day
                                 width="80"
                                 height="80"
                             />
-
+                            {% if attendee.github_username or attendee.twitter_username %}
                             <ul>
+                                {% if attendee.github_username %}
                                 <li class="github">
-                                    <a href="http://github.com/{{ attendee.github_username}}" target="_blank">
-                                        @{{ attendee.github_username}}
+                                    <a href="http://github.com/{{ attendee.github_username }}" target="_blank">
+                                        @{{ attendee.github_username }}
                                     </a>
                                 </li>
+                                {% endif %}
+                                {% if attendee.twitter_username %}
                                 <li class="twitter">
-                                    <a href="http://twitter.com/{{ attendee.twitter_username}}" target="_blank">
-                                        @{{ attendee.twitter_username}}
+                                    <a href="http://twitter.com/{{ attendee.twitter_username }}" target="_blank">
+                                        @{{ attendee.twitter_username }}
                                     </a>
                                 </li>
+                                {% endif %}
                             </ul>
+                            {% endif %}
                             <h5>
                                 {{ attendee.name }}
                             </h5>
