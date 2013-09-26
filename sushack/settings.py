@@ -113,7 +113,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 ROOT_URLCONF = 'sushack.urls'
-SECRET_KEY = '$$g6*tl!&amp;u4kd9!cs*re9#-u+xe!)25)m0(&amp;*1%8k*p*&amp;^cc6i'
+SECRET_KEY = os.getenv('SECRET_KEY')
 SITE_ID = 1
 WSGI_APPLICATION = 'sushack.wsgi.application'
 
