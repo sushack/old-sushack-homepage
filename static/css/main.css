@@ -414,6 +414,11 @@ p, li {
     cursor: pointer;
 }
 
+pre {
+   width: 17em;
+   margin: 0 auto;
+}
+
 @media screen and (max-width: 1000px) {
     /* styles for big screens */
 
