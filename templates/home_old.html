@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+{% load gravatar %}
+
+{% block page_title %}
+SusHack Oxford - The sustainability oriented hack day
+{% endblock page_title %}
+
+{% block content %}
+    <header class="banner">
+        <div class="section-inner">
+            <h1>SusHack_ Oxford</h1>
+        </div>
+    </header>
+    <section class="section what">
+        <div class="section-inner">
+            <h2>
+                What is SusHack?
+            </h2>
+            <div class="pull-left">
+                <p>
+                    SusHack is a <strong>free</strong> one-day hack day that helps developers get together to create solutions to sustainability problems using their skills in development and lots of coffee.
+                </p>
+                <p>
+                    The aim of the hack day isn't to deliver any polished software, but to rapidly take something from an idea through to a working/demonstrable piece of software.
+                </p>
+                <p>
+                    SusHack is completely free to attend. We've got the space, food/refreshments and WiFi, all you need to bring is yourself and your laptop.
+                </p>
+            </div>
+            <div class="pull-right">
+                <p>
+                    What kind of things can we make?
+                </p>
+                <ul>
+                    <li>
+                        Google Maps route carbon footprint calculator extension, to easily make informed decisions about travel.
+                    </li>
+                    <li>
+                        Calendar to tell you when food you've bought is due to expire, to reduce food wastage.
+                    </li>
+                    <li>
+                        An application for Raspberry Pi to find which bin week it is, then indicate with LEDs next to bins.
+                    </li>
+                    <li>
+                        Or anything you like. You can specify any ideas you've got for things to make on the <a href="#form">sign up form</a>.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="section when">
+        <div class="section-inner">
+            <h2>
+                When is SusHack?
+            </h2>
+            <p class="centered">
+                SusHack will take place on <strong>{{ event.start|date:"l d F Y" }}</strong>, at <strong>{{ event.start|date:"H:i" }}</strong>.
+            </p>
+        </div>
+    </section>
+    <section class="section where">
+        <div class="section-inner">
+            <h2>
+                Where is SusHack going to be held?
+            </h2>
+            <p class="centered">
+                SusHack will be hosted by <a href="http://2degreesnetwork.com" target="_blank">2degrees</a> at their offices in Summertown.
+            </p>
+            <div id="map_canvas"></div>
+            <p class="centered">
+                <a href="https://www.google.co.uk/maps?q={{ event.where | urlencode }}" target="_blank">
+                    {{ event.where }}
+                </a>
+            </p>
+        </div>
+    </section>
+    <section class="section schedule">
+        <div class="section-inner">
+            <h2>
+                Schedule
+            </h2>
+            <pre>|--------|----------------|
+| Time   | Activity       |
+|--------|----------------|
+| 09:00  | Doors open     |
+| 09:30  | Intro/pastries |
+| 10:00  | Teaming        |
+| 13:00  | Burritos       |
+| 18:00  | Pizza          |
+| 19:30  | Showcase       |
+| 20:30  | Leave          |
+|--------|----------------|</pre>
+        </div>
+    </section>
+    <section class="section how" id="form">
+        <div class="section-inner">
+            <h2>
+                How can I take part?
+            </h2>
+            <p>
+                Sign up using the form below, and follow <a href="http://twitter.com/sushack_" target="_blank">@SusHack_</a> on Twitter, to hear any updates from us as they happen.
+            </p>
+            {% crispy form %}
+        </div>
+    </section>
+    {% if event.attendee_set %}
+        <section class="section who" id="attendees">
+            <div class="section-inner">
+                <h2>
+                    Who is going?
+                </h2>
+                {% if event.attendee_set.all %}
+                <ul class="attendees-list">
+                    {% for attendee in event.attendee_set.all %}
+                        <li class="attendee">
+                            <img
+                                src="{% gravatar_for_email attendee.email %}"
+                                title="{{ attendee.name }}"
+                                width="80"
+                                height="80"
+                            />
+                            {% if attendee.github_username or attendee.twitter_username %}
+                            <ul>
+                                {% if attendee.github_username %}
+                                <li class="github">
+                                    <a href="http://github.com/{{ attendee.github_username }}" target="_blank">
+                                        @{{ attendee.github_username }}
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% if attendee.twitter_username %}
+                                <li class="twitter">
+                                    <a href="http://twitter.com/{{ attendee.twitter_username }}" target="_blank">
+                                        @{{ attendee.twitter_username }}
+                                    </a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                            {% endif %}
+                            <h5>
+                                {{ attendee.name }}
+                            </h5>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <p>
+                    Signed up, but seeing a blue G for your photo? Make sure you used an email address associated with <a href="https://en.gravatar.com/" target="_blank">Gravatar</a>, and set your profile picture there.
+                </p>
+                <p>
+                    Want to change any of the details you've submitted? Let us know via <a href="http://twitter.com/sushack_" target="_blank">Twitter</a> or <a href="mailto:hello@sushack.co.uk" target="_blank">E-mail us</a>.
+                </p>
+                <h3>
+                    Can't make it to this SusHack?
+                </h3>
+                <p>
+                    If this SusHack goes well we'll hold future events, so keep your eyes peeled for that. If you're looking for other technology-based events in Oxford, check out <a href="http://www.digitaloxford.com" target="_blank">Digital Oxford</a>.
+                </p>
+
+                {% else %}
+<pre class="centered">
+Nobody is going :(
+</pre>
+                {% endif %}
+            </div>
+        </section>
+    {% endif %}
+    {% if sponsors %}
+        <section class="section sponsors">
+            <div class="section-inner">
+                <h2>
+                    Sponsors
+                </h2>
+                <ul class="sponsors-list">
+                    {% for sponsor in sponsors.all %}
+                        <li class="sponsor">
+                            <a href="{{ sponsor.url }}" target="_blank">
+                                <img src="{{ MEDIA_URL }}{{ sponsor.image }}" alt="{{ sponsor.name }}" />
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    {% endif %}
+{% endblock content %}
+
+{% block js %}
+
+    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script src="{{ STATIC_URL }}js/jquery-1.8.0.min.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.ui.map.full.min.js"></script>
+    <script>
+
+    $(function() {
+        $('#map_canvas').gmap({
+                scrollwheel: false,
+                navigationControl: true,
+                mapTypeControl: false,
+                scaleControl: false,
+                draggable: false,
+                disableDoubleClickZoom: true,
+                disableDefaultUI: true,
+                mapTypeId: google.maps.MapTypeId.TERRAIN
+        }).bind('init', function() {
+            var image = new google.maps.MarkerImage(
+                '{{ STATIC_URL }}img/marker.png',
+                new google.maps.Size(40, 40),
+                new google.maps.Point(0, 0),
+                new google.maps.Point(15, 40)
+            );
+
+            $('#map_canvas').gmap('addMarker', {
+                'position': new google.maps.LatLng('51.776557','-1.264402'),
+                'bounds': true,
+                'icon': image
+            });
+        });
+        $('a[href^="#"]').on('click', function (e) {
+            e.preventDefault();
+
+            $('html, body').animate({
+                scrollTop: $($(this).attr('href')).offset().top
+            }, 500);
+        });
+
+        $('.close').on('click', function () {
+            $(this).closest('.messages').fadeOut();
+        });
+    });
+    </script>
+{% endblock js %}
