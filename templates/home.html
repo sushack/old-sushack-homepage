@@ -44,7 +44,7 @@ SusHack Oxford - The sustainability oriented hack day
                         An application for Raspberry Pi to find which bin week it is, then indicate with LEDs next to bins.
                     </li>
                     <li>
-                        Or anything you like. You can specify any ideas you've got for things to make on the <a href="#form">sign up form</a>.
+                        Or anything you like.
                     </li>
                 </ul>
             </div>
@@ -53,20 +53,20 @@ SusHack Oxford - The sustainability oriented hack day
     <section class="section when">
         <div class="section-inner">
             <h2>
-                When is SusHack?
+                When was SusHack?
             </h2>
             <p class="centered">
-                SusHack will take place on <strong>{{ event.start|date:"l d F Y" }}</strong>, at <strong>{{ event.start|date:"H:i" }}</strong>.
+                SusHack took place on <strong>{{ event.start|date:"l d F Y" }}</strong>, at <strong>{{ event.start|date:"H:i" }}</strong>.
             </p>
         </div>
     </section>
     <section class="section where">
         <div class="section-inner">
             <h2>
-                Where is SusHack going to be held?
+                Where was SusHack held?
             </h2>
             <p class="centered">
-                SusHack will be hosted by <a href="http://2degreesnetwork.com" target="_blank">2degrees</a> at their offices in Summertown.
+                SusHack was hosted by <a href="http://2degreesnetwork.com" target="_blank">2degrees</a> at their offices in Summertown.
             </p>
             <div id="map_canvas"></div>
             <p class="centered">
@@ -94,69 +94,48 @@ SusHack Oxford - The sustainability oriented hack day
 |--------|----------------|</pre>
         </div>
     </section>
-    <section class="section how" id="form">
-        <div class="section-inner">
-            <h2>
-                How can I take part?
-            </h2>
-            <p>
-                Sign up using the form below, and follow <a href="http://twitter.com/sushack_" target="_blank">@SusHack_</a> on Twitter, to hear any updates from us as they happen.
-            </p>
-            {% crispy form %}
-        </div>
-    </section>
     {% if event.attendee_set %}
         <section class="section who" id="attendees">
             <div class="section-inner">
                 <h2>
-                    Who is going?
+                    Who went?
                 </h2>
                 {% if event.attendee_set.all %}
                 <ul class="attendees-list">
                     {% for attendee in event.attendee_set.all %}
-                        <li class="attendee">
-                            <img
-                                src="{% gravatar_for_email attendee.email %}"
-                                title="{{ attendee.name }}"
-                                width="80"
-                                height="80"
-                            />
-                            {% if attendee.github_username or attendee.twitter_username %}
-                            <ul>
-                                {% if attendee.github_username %}
-                                <li class="github">
-                                    <a href="http://github.com/{{ attendee.github_username }}" target="_blank">
-                                        @{{ attendee.github_username }}
-                                    </a>
-                                </li>
+                        {% if attendee.attended %}
+                            <li class="attendee">
+                                <img
+                                    src="{% gravatar_for_email attendee.email %}"
+                                    title="{{ attendee.name }}"
+                                    width="80"
+                                    height="80"
+                                />
+                                {% if attendee.github_username or attendee.twitter_username %}
+                                <ul>
+                                    {% if attendee.github_username %}
+                                    <li class="github">
+                                        <a href="http://github.com/{{ attendee.github_username }}" target="_blank">
+                                            @{{ attendee.github_username }}
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                    {% if attendee.twitter_username %}
+                                    <li class="twitter">
+                                        <a href="http://twitter.com/{{ attendee.twitter_username }}" target="_blank">
+                                            @{{ attendee.twitter_username }}
+                                        </a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
                                 {% endif %}
-                                {% if attendee.twitter_username %}
-                                <li class="twitter">
-                                    <a href="http://twitter.com/{{ attendee.twitter_username }}" target="_blank">
-                                        @{{ attendee.twitter_username }}
-                                    </a>
-                                </li>
-                                {% endif %}
-                            </ul>
-                            {% endif %}
-                            <h5>
-                                {{ attendee.name }}
-                            </h5>
-                        </li>
+                                <h5>
+                                    {{ attendee.name }}
+                                </h5>
+                            </li>
+                        {% endif %}
                     {% endfor %}
                 </ul>
-                <p>
-                    Signed up, but seeing a blue G for your photo? Make sure you used an email address associated with <a href="https://en.gravatar.com/" target="_blank">Gravatar</a>, and set your profile picture there.
-                </p>
-                <p>
-                    Want to change any of the details you've submitted? Let us know via <a href="http://twitter.com/sushack_" target="_blank">Twitter</a> or <a href="mailto:hello@sushack.co.uk" target="_blank">E-mail us</a>.
-                </p>
-                <h3>
-                    Can't make it to this SusHack?
-                </h3>
-                <p>
-                    If this SusHack goes well we'll hold future events, so keep your eyes peeled for that. If you're looking for other technology-based events in Oxford, check out <a href="http://www.digitaloxford.com" target="_blank">Digital Oxford</a>.
-                </p>
 
                 {% else %}
 <pre class="centered">
