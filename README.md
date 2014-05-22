@@ -1,4 +1,6 @@
-The Django application for http://sushack.co.uk
+The Django application for the old (November 2013) http://sushack.co.uk/
+
+We're using a Jekyll-based approach now, you can find the source at http://github.com/omgmog/sushack.co.uk/
 
 
 Instructions for installation:
